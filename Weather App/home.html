@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="home2.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <div class="input-wrapper">
+                <button class="icon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px">
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"></path>
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M22 22L20 20"></path>
+                    </svg>
+                </button>
+                <input placeholder="Search..." class="input" name="text" type="text" id="cityInput">
+            </div>
+            <button class="btn-shine" onclick="checkWeather()">
+                <span>Enter</span>
+            </button>
+        </div>
+        <div class="weather">
+            <img src="image's/cloud2.webp" alt="Weather" class="weather-icon" id="weatherIcon">
+            <h1 class="temp">" "°C</h1>
+            <h2 class="city">" "</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="image's/humidity.png" alt="Humidity" class="detail-icon">
+                    <p class="humidity">50%</p>
+                    <p>Humidity</p>
+                </div>
+                <div class="col">
+                    <img src="image's/wind2.jpg" alt="Wind Speed" class="detail-icon">
+                    <p class="wind">15 km/h</p>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let apiKey = "d99424b9ef7ef1d1558444e0be2672d4";
+
+        async function checkWeather() {
+            const city = document.getElementById('cityInput').value || 'kolkata';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Weather data not found');
+                }
+                const data = await response.json();
+                const weatherIcon = document.getElementById("weatherIcon");
+
+                
+
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = `${data.main.temp}°C`;
+                document.querySelector(".humidity").innerHTML = `${data.main.humidity}%`;
+                document.querySelector(".wind").innerHTML = `${data.wind.speed} km/h`;
+
+                const weatherCondition = data.weather[0].main.toLowerCase();
+                const weatherIcons = {
+                                   clouds: "image's/cloud2.webp",
+                                 drizzle: "image's/dizzle.jpg",
+                              rain: "image's/rainy.png",
+                             snow: "image's/snow.png",
+                           thunderstorm: "image's/thunderstorm.webp",
+                         mist: "image's/mist.png",
+                         smoke: "image's/smoke.png",
+                             haze: "image's/haze.png",
+                              dust: "image's/dust.png",
+                                fog: "image's/fog.png",
+                                    sand: "image's/sand.png",
+                                      wind: "image's/wind2.jpg",
+                                       clear: "image's/clear2.png"
+                };
+
+                weatherIcon.src = weatherIcons[weatherCondition] || "image's/clear.jpeg";
+
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                alert('Error fetching weather data. Please try again.');
+            }
+            const temp = document.querySelector(".weather").style.display = "block";
+        }
+
+        checkWeather();
+    </script>
+</body>
+</html>

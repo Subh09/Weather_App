@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card {
+  width: 90%;
+  max-width: 470px;
+  background: linear-gradient(135deg, #00feba, #5b548a);
+  color: #222;
+  margin: 100px auto 0;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 22px 30px;
+  text-align: center;
+}
+
+.search {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  position: relative;
+  margin: 0;
+  padding: 10px 30px;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border: 1px solid rgba(21, 78, 176, 0.477);
+  border-radius: 10px;
+  color: #1d89ff;
+  font-weight: 400;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+button span {
+  color: #164ca7;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+button:hover {
+  animation: rotate624 0.7s ease-in-out both;
+}
+
+button:hover span {
+  animation: storm1261 0.90s ease-in-out both;
+  animation-delay: 0.10s;
+}
+
+@keyframes rotate624 {
+  0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes storm1261 {
+  0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+  }
+
+  25% {
+      transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+
+  50% {
+      transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+
+  75% {
+      transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+
+  100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+
+.btn-shine {
+  border: 1px solid;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-shine span {
+  z-index: 20;
+}
+
+.btn-shine:after {
+  background: #38ef7d;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: 0.4;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.btn-shine:hover:after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+}
+
+.input {
+  border-style: none;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  outline: none;
+  border-radius: 50%;
+  transition: .5s ease-in-out;
+  background-color: #8651e988;
+  box-shadow: 0px 0px 3px #f3f3f3;
+  padding-right: 40px;
+  color: #000000;
+}
+
+.input::placeholder,
+.input {
+  font-size: 17px;
+}
+
+.input::placeholder {
+  color: #8f8f8f;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: .2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 3px solid #7e4fd4;
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.weather {
+  margin-top: 20px;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.temp {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.city {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+  margin-top: 50px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.humidity,
+.wind {
+  font-size: 24px;
+  margin-top: 15px 2;
+}
